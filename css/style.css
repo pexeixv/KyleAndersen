@@ -69,10 +69,6 @@ nav .logo h3 {
   cursor: pointer;
 }
 
-nav .logo h3:hover {
-  color: orange;
-}
-
 nav ul {
   height: 100%;
   width: 25%;
@@ -101,6 +97,10 @@ nav ul a:hover {
 
 nav ul .currentpage {
   font-weight: bolder;
+  color: orange;
+}
+
+nav .logo:hover > h3 {
   color: orange;
 }
 
@@ -169,9 +169,6 @@ main a {
   html {
     font-size: 40%;
   }
-  * {
-    outline: .5px solid red;
-  }
   main {
     height: calc( 100vh - 132px);
     display: -webkit-box;
@@ -196,6 +193,11 @@ main a {
   }
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 section.gallery {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -218,29 +220,36 @@ section.gallery h1 {
   text-transform: uppercase;
   color: orange;
   font-weight: bolder;
+  text-align: center;
 }
 
 section.gallery div.galleryContent {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (22%)[auto-fit];
-      grid-template-columns: repeat(auto-fit, 22%);
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
   grid-gap: 5rem 2rem;
   width: 100%;
-  padding: 3rem 0rem 7rem;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  padding: 3rem 4rem 7rem;
+  -ms-flex-line-pack: center;
+      align-content: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  justify-items: center;
+}
+
+section.gallery div.galleryContent * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 section.gallery div.galleryContent .card {
-  background: #ffa60086;
+  background: orange;
+  background: #ffcd70;
   border-radius: 1.5rem;
   padding: 1.5rem;
-  width: clamp(100px, 33vw, 300px);
+  width: minmax(150px, 200px);
   overflow: hidden;
 }
 
@@ -276,6 +285,7 @@ section.gallery div.galleryContent .card .cardText h3 {
 
 section.gallery div.galleryContent .card .cardText p {
   font-size: clamp(0.8rem, 1vw, 1.2rem);
+  color: #42200a;
 }
 
 section.gallery div.galleryContent .card .cardText .cardFooter {
@@ -315,10 +325,40 @@ section.gallery div.galleryContent .card .cardText .cardFooter a {
   font-size: clamp(1rem, 3vw, 2rem);
   font-weight: bold;
   text-transform: uppercase;
-  background: black;
-  color: orange;
+  background: #42200a;
+  color: #ffcd70;
   padding: 1rem 2rem;
   border-radius: 0 1.5rem 1.5rem 0;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+section.gallery div.galleryContent .card .cardText .cardFooter a:hover {
+  -webkit-box-shadow: 0 0 0 3px #42200a;
+          box-shadow: 0 0 0 3px #42200a;
+  background: transparent;
+  color: #42200a;
+}
+
+@media screen and (max-width: 1100px) {
+  section.gallery div.galleryContent {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  section.gallery div.galleryContent {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  section.gallery div.galleryContent {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 footer {
@@ -359,7 +399,8 @@ footer li h4 {
   color: orange;
 }
 
-footer li p {
+footer li a {
   font-size: 1.2rem;
+  color: #ebebeb;
 }
 /*# sourceMappingURL=style.css.map */
